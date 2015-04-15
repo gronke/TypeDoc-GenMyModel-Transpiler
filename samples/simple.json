@@ -1,23 +1,11 @@
-<uml:Model xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xmi:version="2.0" xmi:id="_zpYL4ON7EeSyAtfQFgWBxA" name="model">
-<eAnnotations xmi:id="_zpYL4eN7EeSyAtfQFgWBxA" source="genmymodel">
-<details xmi:id="_zpYL4uN7EeSyAtfQFgWBxA" key="uuid" value="_qolg0ON7EeSyAtfQFgWBxA"/>
-</eAnnotations>
-<packageImport xmi:id="_zpYL4-N7EeSyAtfQFgWBxA">
-<eAnnotations xmi:id="_zpYL5ON7EeSyAtfQFgWBxA" source="genmymodel">
-<details xmi:id="_zpYL5eN7EeSyAtfQFgWBxA" key="uuid" value="_qomu8ON7EeSyAtfQFgWBxA"/>
-</eAnnotations>
-<importedPackage href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#/"/>
-</packageImport>
-<packageImport xmi:id="_zpYL5uN7EeSyAtfQFgWBxA">
-<eAnnotations xmi:id="_zpYL5-N7EeSyAtfQFgWBxA" source="genmymodel">
-<details xmi:id="_zpYL6ON7EeSyAtfQFgWBxA" key="uuid" value="_qonWAON7EeSyAtfQFgWBxA"/>
-</eAnnotations>
-<importedPackage href="pathmap://GENMYMODEL_LIBRARIES/GenMyModelPrimitiveTypes.library.uml#/"/>
-</packageImport>
-<packagedElement xsi:type="uml:Package" xmi:id="_zpYL6eN7EeSyAtfQFgWBxA" name="Type.Package">
-<eAnnotations xmi:id="_zpYL6uN7EeSyAtfQFgWBxA" source="genmymodel">
-<details xmi:id="_zpYL6-N7EeSyAtfQFgWBxA" key="uuid" value="_sz_xsMWpEDKS-J0PQ0wNFg"/>
-</eAnnotations>
-</packagedElement>
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xmi:id="_3KdtAON7EeSyAtfQFgWBxA" name="model">
+  <packageImport xmi:id="_3KdtA-N7EeSyAtfQFgWBxA">
+    <importedPackage href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#/"/>
+  </packageImport>
+  <packageImport xmi:id="_3KdtBuN7EeSyAtfQFgWBxA">
+    <importedPackage href="pathmap://GENMYMODEL_LIBRARIES/GenMyModelPrimitiveTypes.library.uml#/"/>
+  </packageImport>
+  <packagedElement xsi:type="uml:Package" xmi:id="_3KdtCeN7EeSyAtfQFgWBxA" name="Type.Package">
+  </packagedElement>
 </uml:Model>
-
