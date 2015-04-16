@@ -12,13 +12,8 @@ class ClassName {
 	public publicPropertyArray: Array<number>;
     public publicPropertyEnumeration: EnumName;
     public publicPropertyAny: any;
-    public publicPropertyInterface: InterfaceName;
 
     private privatePropertyString: string;
-
-
-    
-
 }
 
 
