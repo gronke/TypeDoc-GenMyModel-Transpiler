@@ -77,7 +77,7 @@ xw.writeAttribute('encoding', 'UTF-8');
 
     });
 
-    return input;
+    target.endElement();
 
   };
 
@@ -112,18 +112,6 @@ xw.writeAttribute('encoding', 'UTF-8');
     return createElement('packagedElement', attrs, target);
   }
 
-/*
-  createElement('packageImport', {
-    'xmi:id': '_3KdtA-N7EeSyAtfQFgWBxA'
-  });
-
-  createElement('importedPackage', {
-    'href': 'pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#/'
-  });
-
-  out.endElement().endElement();
-*/
-
   function getObjectFlag(flag, obj) {
     if(!obj.flags || !obj.flags[flag])
       return false;
@@ -142,6 +130,37 @@ xw.writeAttribute('encoding', 'UTF-8');
     }
 
     return (flagValue === match);
+  }
+
+  function extractType(typeObj) {
+
+    var typeDefinition = {
+      name: typeObj.name,
+      id: null,
+      multiple: false
+    };
+
+    if(typeObj.typeArguments) { // cardinality *
+      typeDefinition.name = typeObj.typeArguments[0].name;
+      typeDefinition.multiple = true;
+    }
+
+    typeDefinition.id = getAndHashTypeId(typeDefinition.name);
+    return typeDefinition;
+
+  }
+
+  function addCardinality(out) {
+    createElement('lowerValue', {
+      'xsi:type': 'uml:LiteralInteger'
+    });
+    out.endElement();
+
+    createElement('upperValue', {
+      'xsi:type': 'uml:LiteralUnlimitedNatural',
+      'value': '*'
+    });
+    out.endElement();
   }
 
   function processInput(obj) {
@@ -193,45 +212,61 @@ xw.writeAttribute('encoding', 'UTF-8');
 
     // Return Parameter
     try {
-      var typeName = obj.signatures[0].type.name,
-          typeId = getAndHashTypeId(typeName);
+      var type = extractType(obj.signatures[0].type);
 
       createElement('ownedParameter', {
-        'type': typeId,
+        'type': type.id,
         'name': 'returnParameter',
         'direction': 'return',
         'isUnique': 'false'
       }, out);
 
+      if(type.multiple === true) {
+        console.log('oh look at parameter ' + type.name + ' of ' + obj.name);
+        addCardinality(out);
+      }
+
       out.endElement();
 
     } catch(e) {
-      //console.log(obj.name + ' does not have a signature type');
     }
 
     // General Parameters
     try {
       
-      var parameters = obj.signatures[0].parameters,
-          typeId, typeName;
+      var parameters = obj.signatures[0].parameters;
+      if(parameters && parameters.length>0) {
+        parameters.forEach(function(parameter) {
 
-      parameters.forEach(function(parameter) {
+          var type = extractType(parameter);
 
-        typeName = parameter.type.name;
-        typeId = getAndHashTypeId(typeName);
+          createElement('ownedParameter', {
+            'type': type.id,
+            'isUnique': 'false',
+            'name': type.name
+          }, out);
 
-        createElement('ownedParameter', {
-          'type': typeId,
-          'isUnique': 'false',
-          'name': parameter.name
-        }, out);
+          if(type.multiple === true) {
+            console.log('oh look at parameter ' + type.name + ' of ' + obj.name);
+            addCardinality(out);
+          }
 
-        out.endElement();
 
-      });
+          out.endElement();
+
+        });
+      }
 
     } catch(e) {
-      //console.log(e.message);
+    }
+
+    // Array Attributes
+    try {
+      var type = extractType(obj.type);
+      if(type.multiple === true) {
+        addCardinality(out);
+      }
+    } catch(e) {
     }
 
 
