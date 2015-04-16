@@ -28,9 +28,8 @@ xw.writeAttribute('name', 'model');
     return randomString;
   }
 
-  function createPackagedElement(attrs, target) {
-    target = target || out;
-    var packagedElement = out.startElement('packagedElement');
+  function createElement(elementType, attrs) {
+    var packagedElement = out.startElement(elementType);
 
     attrs = attrs || {};
     attrs['xmi:id'] = attrs['xmi:id'] || generateRandomId();
@@ -42,13 +41,36 @@ xw.writeAttribute('name', 'model');
     return packagedElement;
   }
 
+  function createPackagedElement(attrs, target) {
+    return createElement('packagedElement', attrs, target);
+  }
+
+  createElement('packageImport', {
+    'xmi:id': '_3KdtA-N7EeSyAtfQFgWBxA'
+  });
+
+  createElement('importedPackage', {
+    'href': 'pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#/'
+  });
+
+  out.endElement().endElement();
+
+  createElement('packageImport', {
+    'xmi:id': '_3KdtBuN7EeSyAtfQFgWBxA'
+  });
+
+  createElement('importedPackage', {
+    'href': 'pathmap://GENMYMODEL_LIBRARIES/GenMyModelPrimitiveTypes.library.uml#/'
+  });
+
+  out.endElement().endElement();
+
   createPackagedElement({ 
     'name': 'FooBar',
     'xsi:type': 'uml:Package',
   });
 
 })(xw);
-
 
 xw.endDocument();
 console.log(xw.toString());
