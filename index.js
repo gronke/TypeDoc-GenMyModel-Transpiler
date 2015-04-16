@@ -1,5 +1,6 @@
 //var src = './samples/TimeCapsule.json';
 var src = '../API/output.json';
+//var src = './samples/input.d.json';
 
 var input = require(src),
     translation = require('./config/translation.json');
@@ -190,6 +191,7 @@ xw.writeAttribute('encoding', 'UTF-8');
     var elementType = t.elementType || 'packagedElement';
     createElement(elementType, attrs);
 
+    // Return Parameter
     try {
       var typeName = obj.signatures[0].type.name,
           typeId = getAndHashTypeId(typeName);
@@ -199,13 +201,39 @@ xw.writeAttribute('encoding', 'UTF-8');
         'name': 'returnParameter',
         'direction': 'return',
         'isUnique': 'false'
-      });
+      }, out);
 
       out.endElement();
 
     } catch(e) {
       //console.log(obj.name + ' does not have a signature type');
     }
+
+    // General Parameters
+    try {
+      
+      var parameters = obj.signatures[0].parameters,
+          typeId, typeName;
+
+      parameters.forEach(function(parameter) {
+
+        typeName = parameter.type.name;
+        typeId = getAndHashTypeId(typeName);
+
+        createElement('ownedParameter', {
+          'type': typeId,
+          'isUnique': 'false',
+          'name': parameter.name
+        }, out);
+
+        out.endElement();
+
+      });
+
+    } catch(e) {
+      //console.log(e.message);
+    }
+
 
     if(obj.children && obj.children.length > 0) {
       obj.children.forEach(function(child) {
