@@ -64,6 +64,26 @@ xw.writeAttribute('name', 'model');
   out.endElement().endElement();
 */
 
+  function getObjectFlag(flag, obj) {
+    if(!obj.flags || !obj.flags[flag])
+      return false;
+
+    return obj.flags[flag].toString();
+  }
+
+  function isObjectFlagEqual(flag, match, obj, caseSensetive) {
+
+    caseSensetive = !!caseSensetive;
+    var flagValue = getObjectFlag(flag, obj);
+
+    if(!caseSensetive && (typeof(flagValue) === 'string')) {
+      match = match.toLowerCase();
+      flagValue = flagValue.toLowerCase();
+    }
+
+    return (flagValue === match);
+  }
+
   function processInput(obj) {
 
     // lookup translation
@@ -89,15 +109,24 @@ xw.writeAttribute('name', 'model');
 
         if(elementKey != 'children') {
           elementValue = obj[elementKey];
-          pattern = new RegExp('{{' + elementKey + '}}')
+
+          // replace variables
+          pattern = new RegExp('{{' + elementKey + '}}');
           translationValue = translationValue.replace(pattern, elementValue);
+
         }
 
       });
 
-      attrs[translationKey] = translationValue;
+      if(translationValue !== null) {
+        attrs[translationKey] = translationValue;
+      }
 
     });
+
+    if(isObjectFlagEqual('isPrivate', 'true', obj)) {
+      attrs.visibility = 'private';
+    }
 
     var elementType = t.elementType || 'packagedElement';
     createElement(elementType, attrs);
@@ -113,34 +142,6 @@ xw.writeAttribute('name', 'model');
   }
 
   processInput(input);
-
-/*
-  createElement('packageImport', {
-    'xmi:id': '_3KdtBuN7EeSyAtfQFgWBxA'
-  });
-
-  createElement('importedPackage', {
-    'href': 'pathmap://GENMYMODEL_LIBRARIES/GenMyModelPrimitiveTypes.library.uml#/'
-  });
-
-  out.endElement().endElement();
-
-  [
-    'Package',
-    'Class',
-    'Interface',
-    'DataType',
-    'Enumeration'
-  ].forEach(function(item) {
-
-    createPackagedElement({ 
-      'name': 'Type.' + item,
-      'xsi:type': 'uml:' + item,
-    }).endElement();
-
-  });
-
-*/
 
 })(xw);
 
