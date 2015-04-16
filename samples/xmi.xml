@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xmi:id="_ildfAOQXEeSNGZq_xSbn1w" name="model">
+  <eAnnotations xmi:id="_ildfAeQXEeSNGZq_xSbn1w" source="genmymodel">
+    <details xmi:id="_ildfAuQXEeSNGZq_xSbn1w" key="uuid" value="_qolg0ON7EeSyAtfQFgWBxA"/>
+  </eAnnotations>
+  <packageImport xmi:id="_ildfA-QXEeSNGZq_xSbn1w">
+    <eAnnotations xmi:id="_ildfBOQXEeSNGZq_xSbn1w" source="genmymodel">
+      <details xmi:id="_ildfBeQXEeSNGZq_xSbn1w" key="uuid" value="_qomu8ON7EeSyAtfQFgWBxA"/>
+    </eAnnotations>
+    <importedPackage href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#/"/>
+  </packageImport>
+  <packageImport xmi:id="_ildfBuQXEeSNGZq_xSbn1w">
+    <eAnnotations xmi:id="_ildfB-QXEeSNGZq_xSbn1w" source="genmymodel">
+      <details xmi:id="_ildfCOQXEeSNGZq_xSbn1w" key="uuid" value="_qonWAON7EeSyAtfQFgWBxA"/>
+    </eAnnotations>
+    <importedPackage href="pathmap://GENMYMODEL_LIBRARIES/GenMyModelPrimitiveTypes.library.uml#/"/>
+  </packageImport>
+  <packagedElement xsi:type="uml:Package" xmi:id="_ildfCeQXEeSNGZq_xSbn1w" name="Type.Package">
+    <eAnnotations xmi:id="_ildfCuQXEeSNGZq_xSbn1w" source="genmymodel">
+      <details xmi:id="_ildfC-QXEeSNGZq_xSbn1w" key="uuid" value="_sz_xsMWpEDKS-J0PQ0wNFg"/>
+    </eAnnotations>
+  </packagedElement>
+  <packagedElement xsi:type="uml:Class" xmi:id="_ildfDOQXEeSNGZq_xSbn1w" name="Type.Class">
+    <eAnnotations xmi:id="_ildfDeQXEeSNGZq_xSbn1w" source="genmymodel">
+      <details xmi:id="_ildfDuQXEeSNGZq_xSbn1w" key="uuid" value="_U_F_0MWuEDKPPf-LfWBukg"/>
+    </eAnnotations>
+  </packagedElement>
+  <packagedElement xsi:type="uml:Interface" xmi:id="_ildfD-QXEeSNGZq_xSbn1w" name="Type.Interface">
+    <eAnnotations xmi:id="_ildfEOQXEeSNGZq_xSbn1w" source="genmymodel">
+      <details xmi:id="_ildfEeQXEeSNGZq_xSbn1w" key="uuid" value="_WO7QAMWuEDKPPf-LfWBukg"/>
+    </eAnnotations>
+  </packagedElement>
+  <packagedElement xsi:type="uml:DataType" xmi:id="_ildfEuQXEeSNGZq_xSbn1w" name="Type.DataType">
+    <eAnnotations xmi:id="_ildfE-QXEeSNGZq_xSbn1w" source="genmymodel">
+      <details xmi:id="_ildfFOQXEeSNGZq_xSbn1w" key="uuid" value="_Y0MCEMWuEDKPPf-LfWBukg"/>
+    </eAnnotations>
+  </packagedElement>
+  <packagedElement xsi:type="uml:Enumeration" xmi:id="_ildfFeQXEeSNGZq_xSbn1w" name="Type.Enumeration">
+    <eAnnotations xmi:id="_ildfFuQXEeSNGZq_xSbn1w" source="genmymodel">
+      <details xmi:id="_ildfF-QXEeSNGZq_xSbn1w" key="uuid" value="_ahqQgMWuEDKPPf-LfWBukg"/>
+    </eAnnotations>
+  </packagedElement>
+</uml:Model>
