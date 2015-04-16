@@ -1,0 +1,40 @@
+{
+  "0": {
+    "elementType": "uml:Model",
+    "attrs": {
+      "xmi:version": "2.0",
+      "xmlns:xmi": "http://www.omg.org/XMI",
+      "xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
+      "xmlns:uml": "http://www.eclipse.org/uml2/4.0.0/UML",
+      "name": "{{name}}"
+    }
+  },
+  "2": {
+    "elementType": "packagedElement",
+    "attrs": {
+      "xsi:type": "uml:Package",
+      "name": "{{name}}"
+    }
+  },
+  "4": {
+    "elementType": "packagedElement",
+    "attrs": {
+      "xsi:type": "uml:Enumeration",
+      "name": "{{name}}"
+    }
+  },
+  "128": {
+    "elementType": "packagedElement",
+    "attrs": {
+      "xsi:type": "uml:Class",
+      "xmi:id": "_{{id}}",
+      "name": "{{name}}"
+    }
+  },
+  "2048": {
+    "elementType": "ownedOperation",
+    "attrs": {
+      "name": "{{name}}"
+    }
+  }
+}
