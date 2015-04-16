@@ -28,7 +28,7 @@ xw.writeAttribute('encoding', 'UTF-8');
   }
 
   function padId(str) {
-    return pad(str, 24, '_');
+    return pad(str, 23, '_');
   }
 
   function getAndHashTypeId(typeName) {
@@ -59,8 +59,7 @@ xw.writeAttribute('encoding', 'UTF-8');
     createElement('packagedElement', {
       'xmi:id': padId('typescript'),
       'name': 'TypeScript',
-      'xsi:type': 'uml:Package',
-      'kind': 2
+      'xsi:type': 'uml:Package'
     }, target);
 
     types.forEach(function(type) {
@@ -70,8 +69,7 @@ xw.writeAttribute('encoding', 'UTF-8');
       createElement('packagedElement', {
         'xmi:id': typeId,
         'name': type,
-        'xsi:type': 'uml:Class',
-        'kind': 128
+        'xsi:type': 'uml:Class'
       }, target);
 
       target.endElement();
