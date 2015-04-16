@@ -65,9 +65,19 @@ xw.writeAttribute('name', 'model');
 
   out.endElement().endElement();
 
-  createPackagedElement({ 
-    'name': 'FooBar',
-    'xsi:type': 'uml:Package',
+  [
+    'Package',
+    'Class',
+    'Interface',
+    'DataType',
+    'Enumeration'
+  ].forEach(function(item) {
+
+    createPackagedElement({ 
+      'name': 'Type.' + item,
+      'xsi:type': 'uml:' + item,
+    }).endElement();
+
   });
 
 })(xw);
