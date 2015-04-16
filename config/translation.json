@@ -10,6 +10,13 @@
     },
     "injectTypePackage": true
   },
+  "1": {
+    "elementType": "packagedElement",
+    "attrs": {
+      "xsi:type": "uml:Package",
+      "name": "{{name}}"
+    }
+  },
   "2": {
     "elementType": "packagedElement",
     "attrs": {
