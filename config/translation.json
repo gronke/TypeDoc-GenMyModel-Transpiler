@@ -39,6 +39,12 @@
       "name": "{{name}}"
     }
   },
+  "1024": {
+    "elementType": "ownedAttribute",
+    "attrs": {
+      "name": "{{name}}"
+    }
+  },
   "2048": {
     "elementType": "ownedOperation",
     "attrs": {
