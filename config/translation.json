@@ -7,7 +7,8 @@
       "xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
       "xmlns:uml": "http://www.eclipse.org/uml2/4.0.0/UML",
       "name": "{{name}}"
-    }
+    },
+    "injectTypePackage": true
   },
   "2": {
     "elementType": "packagedElement",

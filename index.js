@@ -7,20 +7,80 @@ var input = require(src),
 var XMLWriter = require('xml-writer');
     xw = new XMLWriter;
 
+var types = ['jQuery', 'number'];
+
 var verbose = false;
 
 // Create Document
 xw.startDocument('1.0', 'UTF-8');
 xw.writeAttribute('encoding', 'UTF-8');
-/*xw.startElement('uml:Model');
-xw.writeAttribute('xmlns:xmi', 'http://www.omg.org/XMI');
-xw.writeAttribute('xmlns:xsi', 'http://www.w3.org/2001/XMLSchema-instance');
-xw.writeAttribute('xmlns:uml', 'http://www.eclipse.org/uml2/4.0.0/UML');
-xw.writeAttribute('xmi:id', '_MgQ4wOHCEeSyAtfQFgWBxA');
-xw.writeAttribute('name', 'model');
-*/
 
 (function(out) {
+
+  function pad(str, len, character) {
+
+    while(str.length < len) {
+      str = character.toString() + str;
+    }
+
+    return str;
+
+  }
+
+  function padId(str) {
+    return pad(str, 24, '_');
+  }
+
+  function getAndHashTypeId(typeName) {
+
+    var typeId = padId(typeName),
+        found = false;
+
+    types.forEach(function(type) {
+      if(typeName === type) {
+        found = true;
+      }
+    });
+
+    if(!found) {
+      types.push(typeName);
+    }
+
+    return typeId;
+
+  }
+
+  function injectTypePackage(types, target) {
+
+    target = target || out;
+    var typeId;
+
+    // TypeScript Package Container
+    createElement('packagedElement', {
+      'xmi:id': padId('typescript'),
+      'name': 'TypeScript',
+      'xsi:type': 'uml:Package',
+      'kind': 2
+    }, target);
+
+    types.forEach(function(type) {
+
+      typeId = padId(type);
+
+      createElement('packagedElement', {
+        'xmi:id': typeId,
+        'name': type,
+        'xsi:type': 'uml:Class',
+        'kind': 128
+      }, target);
+
+      target.endElement();
+
+    });
+
+    return input;
+
+  };
 
   function generateRandomId(len) {
     len = len || 24;
@@ -35,8 +95,9 @@ xw.writeAttribute('name', 'model');
     return randomString;
   }
 
-  function createElement(elementType, attrs) {
-    var packagedElement = out.startElement(elementType);
+  function createElement(elementType, attrs, target) {
+    target = target || out;
+    var packagedElement = target.startElement(elementType);
 
     attrs = attrs || {};
     attrs['xmi:id'] = attrs['xmi:id'] || generateRandomId();
@@ -131,10 +192,31 @@ xw.writeAttribute('name', 'model');
     var elementType = t.elementType || 'packagedElement';
     createElement(elementType, attrs);
 
+    try {
+      var typeName = obj.signatures[0].type.name,
+          typeId = getAndHashTypeId(typeName);
+
+      createElement('ownedParameter', {
+        'type': typeId,
+        'name': 'returnParameter',
+        'direction': 'return',
+        'isUnique': 'false'
+      });
+
+      out.endElement();
+
+    } catch(e) {
+      //console.log(obj.name + ' does not have a signature type');
+    }
+
     if(obj.children && obj.children.length > 0) {
       obj.children.forEach(function(child) {
         processInput(child);
       });
+    }
+
+    if(t.injectTypePackage === true) {
+      injectTypePackage(types, out);
     }
 
     out.endElement();
