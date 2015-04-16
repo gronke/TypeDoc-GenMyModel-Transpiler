@@ -34,7 +34,6 @@
   "2048": {
     "elementType": "ownedOperation",
     "attrs": {
-      "xsi:type": "uml:Method",
       "name": "{{name}}"
     }
   }
