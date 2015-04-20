@@ -8,5 +8,5 @@ The first commandline argument is the source filename of the JSON input file.
 Usage
 -----
 ```sh
-node samples/simple.json | tidy -xml -i -q -
+node index.js samples/simple.json | tidy -xml -i -q -
 ```
