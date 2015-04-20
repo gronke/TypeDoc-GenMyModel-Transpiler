@@ -1,9 +1,10 @@
-//var src = './samples/TimeCapsule.json';
-var src = '../API/output.json';
-//var src = './samples/input.d.json';
+var translation = require('./config/translation.json'),
+    argv = require('optimist').argv,
+    path = require('path');
 
-var input = require(src),
-    translation = require('./config/translation.json');
+// input file is the first cli argument
+var src = path.resolve(__dirname, argv._[0]),
+    input = require(src);
 
 var XMLWriter = require('xml-writer');
     xw = new XMLWriter;
