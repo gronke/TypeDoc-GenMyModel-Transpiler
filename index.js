@@ -220,6 +220,13 @@ xw.writeAttribute('encoding', 'UTF-8');
       return; // skip inherited elements
     }
 
+    // Handle Type for Attribute-ish items
+    try {
+      var type = getAndHashTypeId(obj.type.name);
+      attrs.type = type;
+    } catch(e) {
+    }
+
     var elementType = t.elementType || 'packagedElement';
     createElement(elementType, attrs);
 
@@ -264,7 +271,6 @@ xw.writeAttribute('encoding', 'UTF-8');
             addCardinality(out);
           }
 
-
           out.endElement();
 
         });
@@ -281,7 +287,6 @@ xw.writeAttribute('encoding', 'UTF-8');
       }
     } catch(e) {
     }
-
 
     if(obj.children && obj.children.length > 0) {
       obj.children.forEach(function(child) {
