@@ -208,6 +208,10 @@ xw.writeAttribute('encoding', 'UTF-8');
       attrs.visibility = 'private';
     }
 
+    if(isObjectFlagEqual('isStatic', 'true', obj)) {
+      attrs.isStatic = 'true';
+    }
+
     var elementType = t.elementType || 'packagedElement';
     createElement(elementType, attrs);
 
