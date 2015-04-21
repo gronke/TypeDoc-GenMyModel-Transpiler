@@ -120,6 +120,10 @@ xw.writeAttribute('encoding', 'UTF-8');
     return obj.flags[flag].toString();
   }
 
+  function isObjectFlagDefined(flag, obj) {
+    return (obj[flag] !== undefined) && (obj[flag] !== null);
+  }
+
   function isObjectFlagEqual(flag, match, obj, caseSensetive) {
 
     caseSensetive = !!caseSensetive;
@@ -210,6 +214,10 @@ xw.writeAttribute('encoding', 'UTF-8');
 
     if(isObjectFlagEqual('isStatic', 'true', obj)) {
       attrs.isStatic = 'true';
+    }
+
+    if(isObjectFlagDefined('inheritedFrom', obj)) {
+      return; // skip inherited elements
     }
 
     var elementType = t.elementType || 'packagedElement';
