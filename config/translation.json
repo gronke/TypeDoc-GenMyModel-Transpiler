@@ -50,5 +50,11 @@
     "attrs": {
       "name": "{{name}}"
     }
+  },
+  "8388608": {
+    "elementType": "ownedAttribute",
+    "attrs": {
+      "name": "{{name}}"
+    }
   }
 }
