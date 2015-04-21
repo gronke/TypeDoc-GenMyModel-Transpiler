@@ -39,6 +39,14 @@
       "name": "{{name}}"
     }
   },
+  "256": {
+    "elementType": "packagedElement",
+    "attrs": {
+      "xsi:type": "uml:Interface",
+      "xmi:id": "_{{id}}",
+      "name": "{{name}}"
+    }
+  },
   "1024": {
     "elementType": "ownedAttribute",
     "attrs": {
