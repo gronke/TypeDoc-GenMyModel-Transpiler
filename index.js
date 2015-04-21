@@ -148,9 +148,11 @@ xw.writeAttribute('encoding', 'UTF-8');
     if(typeObj.typeArguments) { // cardinality *
       typeDefinition.name = typeObj.typeArguments[0].name;
       typeDefinition.multiple = true;
+      typeDefinition.id = getAndHashTypeId(typeObj.typeArguments[0].name);
+    } else {
+      typeDefinition.id = getAndHashTypeId(typeDefinition.name);
     }
 
-    typeDefinition.id = getAndHashTypeId(typeDefinition.name);
     return typeDefinition;
 
   }
@@ -224,6 +226,15 @@ xw.writeAttribute('encoding', 'UTF-8');
     try {
       var type = getAndHashTypeId(obj.type.name);
       attrs.type = type;
+    } catch(e) {
+    }
+
+    // Override Array type
+    try {
+      var type = extractType(obj.type);
+      if(type.multiple === true) {
+        attrs.type = type.id
+      }
     } catch(e) {
     }
 
