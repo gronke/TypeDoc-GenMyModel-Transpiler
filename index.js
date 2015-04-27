@@ -253,7 +253,6 @@ xw.writeAttribute('encoding', 'UTF-8');
       }, out);
 
       if(type.multiple === true) {
-        console.log('oh look at parameter ' + type.name + ' of ' + obj.name);
         addCardinality(out);
       }
 
@@ -269,12 +268,12 @@ xw.writeAttribute('encoding', 'UTF-8');
       if(parameters && parameters.length>0) {
         parameters.forEach(function(parameter) {
 
-          var type = extractType(parameter);
+          var type = extractType(parameter.type);
 
           createElement('ownedParameter', {
             'type': type.id,
             'isUnique': 'false',
-            'name': type.name
+            'name': parameter.name
           }, out);
 
           if(type.multiple === true) {
