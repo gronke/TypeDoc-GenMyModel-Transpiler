@@ -170,17 +170,17 @@ xw.writeAttribute('encoding', 'UTF-8');
     out.endElement();
   }
 
-  function processInput(obj) {
+  function getTranslation(obj) {
+    return translation[obj.kind];
+  }
 
-    // lookup translation
-    if(!translation[obj.kind]) {
-      if(verbose)
-        console.error('Kind ' + obj.kind + ' has no translation. Skipping');
-      return;
-    }
+  function translateObjectAttributes(obj, attrs, prefix, srcObj) {
 
-    var t = translation[obj.kind],
-        attrs = {};
+    attrs = attrs || {};
+    prefix = prefix || '';
+    srcObj = srcObj || obj;
+
+    var t = getTranslation(obj);
 
     var translationValue,
         elementValue,
@@ -191,13 +191,17 @@ xw.writeAttribute('encoding', 'UTF-8');
 
       translationValue = t.attrs[translationKey];
 
-      Object.keys(obj).forEach(function(elementKey) {
+      if(!translationValue || attrs[translationKey]) {
+        return;
+      }
+
+      Object.keys(srcObj).forEach(function(elementKey) {
 
         if(elementKey != 'children') {
-          elementValue = obj[elementKey];
+          elementValue = srcObj[elementKey];
 
           // replace variables
-          pattern = new RegExp('{{' + elementKey + '}}');
+          pattern = new RegExp('{{' + prefix + elementKey + '}}');
           translationValue = translationValue.replace(pattern, elementValue);
 
         }
@@ -205,17 +209,53 @@ xw.writeAttribute('encoding', 'UTF-8');
       });
 
       if(translationValue !== null) {
-        attrs[translationKey] = translationValue;
+        if(!isPartiallyUnprocessed(translationValue)) {
+          attrs[translationKey] = translationValue;
+        }
       }
 
     });
 
+    return attrs;
+
+  }
+
+  var unprocessedTemplateVariablePattern = new RegExp('{{.*}}');
+    function isPartiallyUnprocessed(value) {
+      var match = value.match(unprocessedTemplateVariablePattern);
+      return match !== null;
+    }
+
+  function handleObjectFlags(obj, attrs) {
     if(isObjectFlagEqual('isPrivate', 'true', obj)) {
       attrs.visibility = 'private';
     }
 
     if(isObjectFlagEqual('isStatic', 'true', obj)) {
       attrs.isStatic = 'true';
+    }
+
+    return attrs;
+  }
+
+  function processInput(obj, parentObj, parentAttrs) {
+
+    parentObj = parentObj || {};
+    parentAttrs = parentAttrs || {};
+
+    // lookup translation
+    if(!translation[obj.kind]) {
+      if(verbose) {
+        console.error('Kind ' + obj.kind + ' has no translation. Skipping');
+      }
+      return;
+    }
+
+    var attrs = translateObjectAttributes(obj);
+    attrs = handleObjectFlags(obj, attrs);
+    if(parentObj) {
+      attrs = translateObjectAttributes(obj, attrs, 'parent:', parentObj);
+      attrs = translateObjectAttributes(obj, attrs, 'parent:', parentAttrs);
     }
 
     if(isObjectFlagDefined('inheritedFrom', obj)) {
@@ -238,7 +278,7 @@ xw.writeAttribute('encoding', 'UTF-8');
     } catch(e) {
     }
 
-    var elementType = t.elementType || 'packagedElement';
+    var elementType = getTranslation(obj).elementType || 'packagedElement';
     createElement(elementType, attrs);
 
     // Return Parameter
@@ -300,11 +340,11 @@ xw.writeAttribute('encoding', 'UTF-8');
 
     if(obj.children && obj.children.length > 0) {
       obj.children.forEach(function(child) {
-        processInput(child);
+        processInput(child, obj, attrs);
       });
     }
 
-    if(t.injectTypePackage === true) {
+    if(getTranslation(obj).injectTypePackage === true) {
       injectTypePackage(types, out);
     }
 
