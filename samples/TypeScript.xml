@@ -1,0 +1,14 @@
+<packagedElement xsi:type="uml:Package" xmi:id="_05jHc-2hEeSTzO_7wOExMA" name="TypeScript">
+    <packagedElement xsi:type="uml:DataType" xmi:id="_05jHee2hEeSTzO_7wOExMA" name="Any">
+    </packagedElement>
+    <packagedElement xsi:type="uml:DataType" xmi:id="_05jHfO2hEeSTzO_7wOExMA" name="String">
+    </packagedElement>
+    <packagedElement xsi:type="uml:DataType" xmi:id="_05jHf-2hEeSTzO_7wOExMA" name="Number">
+    </packagedElement>
+    <packagedElement xsi:type="uml:DataType" xmi:id="_05jHgu2hEeSTzO_7wOExMA" name="Boolean">
+    </packagedElement>
+    <packagedElement xsi:type="uml:DataType" xmi:id="_05jHhe2hEeSTzO_7wOExMA" name="Object">
+    </packagedElement>
+    <packagedElement xsi:type="uml:DataType" xmi:id="_05jHiO2hEeSTzO_7wOExMA" name="Void">
+    </packagedElement>
+</packagedElement>
