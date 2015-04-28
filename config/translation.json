@@ -54,6 +54,13 @@
       "name": "{{name}}"
     }
   },
+  "512": {
+    "elementType": "ownedOperation",
+    "description": "Class Constructor",
+    "attrs": {
+      "name": "{{name}}"
+    }
+  },
   "1024": {
     "elementType": "ownedAttribute",
     "attrs": {
