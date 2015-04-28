@@ -1,4 +1,5 @@
 var translation = require('./config/translation.json'),
+    typescriptDataTypes = require('./config/typescriptDataTypes.json')
     argv = require('optimist').argv,
     path = require('path');
 
@@ -52,6 +53,16 @@ xw.writeAttribute('encoding', 'UTF-8');
 
   }
 
+  function typescriptDataTypeExists(name) {
+    var match = false;
+    typescriptDataTypes.forEach(function(typeName) {
+      if(typeName === name) {
+        match = true;
+      }
+    });
+    return match;
+  }
+
   function injectTypePackage(types, target) {
 
     target = target || out;
@@ -68,10 +79,16 @@ xw.writeAttribute('encoding', 'UTF-8');
 
       typeId = padId(type);
 
+      if(type.toLowerCase() === 'array') {
+        return;
+      }
+
+      var xsiType = typescriptDataTypeExists(type) ? "uml:DataType" : "uml:Class";
+
       createElement('packagedElement', {
         'xmi:id': typeId,
         'name': type,
-        'xsi:type': 'uml:Class'
+        'xsi:type': xsiType
       }, target);
 
       target.endElement();
