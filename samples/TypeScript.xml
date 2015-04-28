@@ -7,8 +7,6 @@
     </packagedElement>
     <packagedElement xsi:type="uml:DataType" xmi:id="_05jHgu2hEeSTzO_7wOExMA" name="boolean">
     </packagedElement>
-    <packagedElement xsi:type="uml:DataType" xmi:id="_05jHhe2hEeSTzO_7wOExMA" name="object">
-    </packagedElement>
     <packagedElement xsi:type="uml:DataType" xmi:id="_05jHiO2hEeSTzO_7wOExMA" name="void">
     </packagedElement>
 </packagedElement>
