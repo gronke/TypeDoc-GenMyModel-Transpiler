@@ -157,17 +157,52 @@ xw.writeAttribute('encoding', 'UTF-8');
 
   }
 
-  function addCardinality(out) {
-    createElement('lowerValue', {
-      'xsi:type': 'uml:LiteralInteger'
-    });
+  function addLowerValue(out, value) {
+    addCardinalityValue(out, 'lower', value);
+  }
+
+  function addUpperValue(out, value) {
+    addCardinalityValue(out, 'upper', value);
+  }
+
+  function addCardinalityValue(out, range, value) {
+    
+    var rangeType = '',
+        options = {};
+
+    if (range !== 'upper') {
+      rangeType = 'lower';
+      options['xsi:type'] = 'uml:LiteralInteger';
+    } else {
+      rangeType = 'upper';
+      options['xsi:type'] = 'uml:LiteralUnlimitedNatural';
+    }
+
+    if(value) {
+      options.value = value;
+    }
+
+    createElement(rangeType + 'Value', options);
     out.endElement();
 
-    createElement('upperValue', {
-      'xsi:type': 'uml:LiteralUnlimitedNatural',
-      'value': '*'
-    });
-    out.endElement();
+  }
+
+  function getDefaultCardinality() {
+    return {
+      lower: null, 
+      upper: '*' 
+    };
+  }
+
+  function addCardinality(out, cardinality) {
+
+    if(!cardinality || !(cardinality instanceof Array)) {
+      cardinality = getDefaultCardinality();
+    }
+
+    addLowerValue(out, cardinality.lower);
+    addUpperValue(out, cardinality.upper);
+
   }
 
   function getTranslation(obj) {
@@ -316,9 +351,10 @@ xw.writeAttribute('encoding', 'UTF-8');
             'name': parameter.name
           }, out);
 
-          if(type.multiple === true) {
-            console.log('oh look at parameter ' + type.name + ' of ' + obj.name);
-            addCardinality(out);
+          // Function Parameter Cardinality (optional)
+          if(isObjectFlagEqual('isOptional', 'true', parameter) === true) {
+            type.multiple = true;
+            addCardinalityValue(out, 'lower');
           }
 
           out.endElement();
