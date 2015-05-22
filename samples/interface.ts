@@ -17,7 +17,7 @@ class Car implements CarInterface {
     this.wheels = 4;
   }
 
-  print() {
+  print(): string {
     return '<pre>Manufacturer: ' + this.manufacturer + '\nModel: ' + this.model + '\nWheels: ' + this.wheels + '</pre>';
   }
 
