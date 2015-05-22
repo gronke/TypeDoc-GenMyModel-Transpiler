@@ -11,6 +11,7 @@ var XMLWriter = require('xml-writer');
     xw = new XMLWriter;
 
 var types = ['jQuery', 'number', 'string', 'boolean', 'void'];
+var createdTypes = [];
 
 var verbose = false;
 
@@ -310,6 +311,18 @@ xw.writeAttribute('encoding', 'UTF-8');
       attrs = translateObjectAttributes(obj, attrs, 'parent:', parentAttrs);
     }
 
+    // handle (translated) uml:Class type as referencable type
+    try {
+      if(getTranslation(obj).attrs['xsi:type'] === 'uml:Class') {
+        var type = padId(obj.name);
+        createdTypes[obj.name] = type;
+        attrs['xmi:id'] = type;
+      }
+    } catch(e) {
+      attrs['xmi:id'] = attrs['xmi:id'] || generateRandomId();
+    }
+
+
     if(isObjectFlagDefined('inheritedFrom', obj)) {
       return; // skip inherited elements
     }
@@ -398,7 +411,10 @@ xw.writeAttribute('encoding', 'UTF-8');
     }
 
     if(getTranslation(obj).injectTypePackage === true) {
-      injectTypePackage(types, out);
+      var t = types.filter(function(type) {
+        return (createdTypes[type] === undefined);
+      });
+      injectTypePackage(t, out);
     }
 
     out.endElement();
