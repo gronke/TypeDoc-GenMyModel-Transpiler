@@ -10,7 +10,7 @@ var src = path.resolve(__dirname, argv._[0]),
 var XMLWriter = require('xml-writer');
     xw = new XMLWriter;
 
-var types = ['jQuery', 'number'];
+var types = ['jQuery', 'number', 'string', 'boolean', 'void'];
 
 var verbose = false;
 
