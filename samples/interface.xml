@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xmi:id="_b2VZ0ACNEeWZUI4YxK84RA" name="model">
+  <eAnnotations xmi:id="_b2VZ0QCNEeWZUI4YxK84RA" source="genmymodel">
+    <details xmi:id="_b2VZ0gCNEeWZUI4YxK84RA" key="uuid" value="_b_QCEACJEeWZUI4YxK84RA"/>
+  </eAnnotations>
+  <packageImport xmi:id="_b2VZ0wCNEeWZUI4YxK84RA">
+    <eAnnotations xmi:id="_b2VZ1ACNEeWZUI4YxK84RA" source="genmymodel">
+      <details xmi:id="_b2VZ1QCNEeWZUI4YxK84RA" key="uuid" value="_b_UTgACJEeWZUI4YxK84RA"/>
+    </eAnnotations>
+    <importedPackage href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#/"/>
+  </packageImport>
+  <packageImport xmi:id="_b2VZ1gCNEeWZUI4YxK84RA">
+    <eAnnotations xmi:id="_b2VZ1wCNEeWZUI4YxK84RA" source="genmymodel">
+      <details xmi:id="_b2VZ2ACNEeWZUI4YxK84RA" key="uuid" value="_b_pqsACJEeWZUI4YxK84RA"/>
+    </eAnnotations>
+    <importedPackage href="pathmap://GENMYMODEL_LIBRARIES/GenMyModelPrimitiveTypes.library.uml#/"/>
+  </packageImport>
+  <packagedElement xsi:type="uml:Package" xmi:id="_b2VZ2QCNEeWZUI4YxK84RA" name="TypeScript">
+    <eAnnotations xmi:id="_b2VZ2gCNEeWZUI4YxK84RA" source="genmymodel">
+      <details xmi:id="_b2VZ2wCNEeWZUI4YxK84RA" key="uuid" value="_xGSkkOK5EDKI0csX5kvmCw"/>
+    </eAnnotations>
+    <packagedElement xsi:type="uml:DataType" xmi:id="_b2VZ3ACNEeWZUI4YxK84RA" name="string">
+      <eAnnotations xmi:id="_b2VZ3QCNEeWZUI4YxK84RA" source="genmymodel">
+        <details xmi:id="_b2VZ3gCNEeWZUI4YxK84RA" key="uuid" value="_zcJBoOK5EDKI0csX5kvmCw"/>
+      </eAnnotations>
+    </packagedElement>
+    <packagedElement xsi:type="uml:DataType" xmi:id="_b2VZ3wCNEeWZUI4YxK84RA" name="any">
+      <eAnnotations xmi:id="_b2VZ4ACNEeWZUI4YxK84RA" source="genmymodel">
+        <details xmi:id="_b2VZ4QCNEeWZUI4YxK84RA" key="uuid" value="_1SopMOK5EDKI0csX5kvmCw"/>
+      </eAnnotations>
+    </packagedElement>
+    <packagedElement xsi:type="uml:DataType" xmi:id="_b2VZ4gCNEeWZUI4YxK84RA" name="void">
+      <eAnnotations xmi:id="_b2VZ4wCNEeWZUI4YxK84RA" source="genmymodel">
+        <details xmi:id="_b2VZ5ACNEeWZUI4YxK84RA" key="uuid" value="_2ZC3oOK5EDKI0csX5kvmCw"/>
+      </eAnnotations>
+    </packagedElement>
+    <packagedElement xsi:type="uml:DataType" xmi:id="_b2VZ5QCNEeWZUI4YxK84RA" name="number">
+      <eAnnotations xmi:id="_b2VZ5gCNEeWZUI4YxK84RA" source="genmymodel">
+        <details xmi:id="_b2VZ5wCNEeWZUI4YxK84RA" key="uuid" value="_3s99oOK5EDKI0csX5kvmCw"/>
+      </eAnnotations>
+    </packagedElement>
+    <packagedElement xsi:type="uml:DataType" xmi:id="_b2VZ6ACNEeWZUI4YxK84RA" name="boolean">
+      <eAnnotations xmi:id="_b2VZ6QCNEeWZUI4YxK84RA" source="genmymodel">
+        <details xmi:id="_b2VZ6gCNEeWZUI4YxK84RA" key="uuid" value="_439xIOK5EDKI0csX5kvmCw"/>
+      </eAnnotations>
+    </packagedElement>
+  </packagedElement>
+  <packagedElement xsi:type="uml:Class" xmi:id="_b2VZ6wCNEeWZUI4YxK84RA" clientDependency="_b2VZ9wCNEeWZUI4YxK84RA" name="Car">
+    <eAnnotations xmi:id="_b2VZ7ACNEeWZUI4YxK84RA" source="genmymodel">
+      <details xmi:id="_b2VZ7QCNEeWZUI4YxK84RA" key="uuid" value="_MUpMQOK6EDKI0csX5kvmCw"/>
+    </eAnnotations>
+    <ownedAttribute xmi:id="_b2VZ7gCNEeWZUI4YxK84RA" name="manufacturer" type="_b2VZ3ACNEeWZUI4YxK84RA">
+      <eAnnotations xmi:id="_b2VZ7wCNEeWZUI4YxK84RA" source="genmymodel">
+        <details xmi:id="_b2VZ8ACNEeWZUI4YxK84RA" key="uuid" value="_NRcLsOK6EDKI0csX5kvmCw"/>
+      </eAnnotations>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_b2VZ8QCNEeWZUI4YxK84RA" name="model" type="_b2VZ3ACNEeWZUI4YxK84RA">
+      <eAnnotations xmi:id="_b2VZ8gCNEeWZUI4YxK84RA" source="genmymodel">
+        <details xmi:id="_b2VZ8wCNEeWZUI4YxK84RA" key="uuid" value="_PVUvAOK6EDKI0csX5kvmCw"/>
+      </eAnnotations>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_b2VZ9ACNEeWZUI4YxK84RA" name="wheels" type="_b2VZ5QCNEeWZUI4YxK84RA">
+      <eAnnotations xmi:id="_b2VZ9QCNEeWZUI4YxK84RA" source="genmymodel">
+        <details xmi:id="_b2VZ9gCNEeWZUI4YxK84RA" key="uuid" value="_Q69QEOK6EDKI0csX5kvmCw"/>
+      </eAnnotations>
+    </ownedAttribute>
+    <interfaceRealization xmi:id="_b2VZ9wCNEeWZUI4YxK84RA" client="_b2VZ6wCNEeWZUI4YxK84RA" supplier="_b2WA7ACNEeWZUI4YxK84RA" contract="_b2WA7ACNEeWZUI4YxK84RA">
+      <eAnnotations xmi:id="_b2VZ-ACNEeWZUI4YxK84RA" source="genmymodel">
+        <details xmi:id="_b2VZ-QCNEeWZUI4YxK84RA" key="uuid" value="_9sMfsOK6EDKI0csX5kvmCw"/>
+      </eAnnotations>
+    </interfaceRealization>
+    <ownedOperation xmi:id="_b2VZ-gCNEeWZUI4YxK84RA" name="constructor">
+      <eAnnotations xmi:id="_b2VZ-wCNEeWZUI4YxK84RA" source="genmymodel">
+        <details xmi:id="_b2VZ_ACNEeWZUI4YxK84RA" key="uuid" value="_TX-FEOK6EDKI0csX5kvmCw"/>
+      </eAnnotations>
+      <ownedParameter xmi:id="_b2VZ_QCNEeWZUI4YxK84RA" name="returnParameter" type="_b2VZ6wCNEeWZUI4YxK84RA" isUnique="false" direction="return">
+        <eAnnotations xmi:id="_b2VZ_gCNEeWZUI4YxK84RA" source="genmymodel">
+          <details xmi:id="_b2VZ_wCNEeWZUI4YxK84RA" key="uuid" value="_TX828OK6EDKI0csX5kvmCw"/>
+        </eAnnotations>
+      </ownedParameter>
+      <ownedParameter xmi:id="_b2WA4ACNEeWZUI4YxK84RA" name="manufacturer" type="_b2VZ3ACNEeWZUI4YxK84RA" isUnique="false">
+        <eAnnotations xmi:id="_b2WA4QCNEeWZUI4YxK84RA" source="genmymodel">
+          <details xmi:id="_b2WA4gCNEeWZUI4YxK84RA" key="uuid" value="_WLWysOK6EDKI0csX5kvmCw"/>
+        </eAnnotations>
+      </ownedParameter>
+      <ownedParameter xmi:id="_b2WA4wCNEeWZUI4YxK84RA" name="model" type="_b2VZ3ACNEeWZUI4YxK84RA" isUnique="false">
+        <eAnnotations xmi:id="_b2WA5ACNEeWZUI4YxK84RA" source="genmymodel">
+          <details xmi:id="_b2WA5QCNEeWZUI4YxK84RA" key="uuid" value="_ZXW0oOK6EDKI0csX5kvmCw"/>
+        </eAnnotations>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:id="_b2WA5gCNEeWZUI4YxK84RA" name="print">
+      <eAnnotations xmi:id="_b2WA5wCNEeWZUI4YxK84RA" source="genmymodel">
+        <details xmi:id="_b2WA6ACNEeWZUI4YxK84RA" key="uuid" value="_AVEmcOK7EDKI0csX5kvmCw"/>
+      </eAnnotations>
+      <ownedParameter xmi:id="_b2WA6QCNEeWZUI4YxK84RA" name="returnParameter" type="_b2VZ3ACNEeWZUI4YxK84RA" isUnique="false" direction="return">
+        <eAnnotations xmi:id="_b2WA6gCNEeWZUI4YxK84RA" source="genmymodel">
+          <details xmi:id="_b2WA6wCNEeWZUI4YxK84RA" key="uuid" value="_AVD_YOK7EDKI0csX5kvmCw"/>
+        </eAnnotations>
+      </ownedParameter>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xsi:type="uml:Interface" xmi:id="_b2WA7ACNEeWZUI4YxK84RA" name="CarInterface">
+    <eAnnotations xmi:id="_b2WA7QCNEeWZUI4YxK84RA" source="genmymodel">
+      <details xmi:id="_b2WA7gCNEeWZUI4YxK84RA" key="uuid" value="_iGYaQOK6EDKI0csX5kvmCw"/>
+    </eAnnotations>
+    <ownedAttribute xmi:id="_b2WA7wCNEeWZUI4YxK84RA" name="manufacturer" type="_b2VZ3ACNEeWZUI4YxK84RA">
+      <eAnnotations xmi:id="_b2WA8ACNEeWZUI4YxK84RA" source="genmymodel">
+        <details xmi:id="_b2WA8QCNEeWZUI4YxK84RA" key="uuid" value="_jusb4OK6EDKI0csX5kvmCw"/>
+      </eAnnotations>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_b2WA8gCNEeWZUI4YxK84RA" name="model" type="_b2VZ3ACNEeWZUI4YxK84RA">
+      <eAnnotations xmi:id="_b2WA8wCNEeWZUI4YxK84RA" source="genmymodel">
+        <details xmi:id="_b2WA9ACNEeWZUI4YxK84RA" key="uuid" value="_l_rAAOK6EDKI0csX5kvmCw"/>
+      </eAnnotations>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_b2WA9QCNEeWZUI4YxK84RA" name="number" type="_b2VZ5QCNEeWZUI4YxK84RA">
+      <eAnnotations xmi:id="_b2WA9gCNEeWZUI4YxK84RA" source="genmymodel">
+        <details xmi:id="_b2WA9wCNEeWZUI4YxK84RA" key="uuid" value="_oMWS8OK6EDKI0csX5kvmCw"/>
+      </eAnnotations>
+    </ownedAttribute>
+  </packagedElement>
+</uml:Model>
