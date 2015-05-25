@@ -322,7 +322,9 @@ xw.writeAttribute('encoding', 'UTF-8');
     // interface realization reference
     try {
       if(getTranslation(obj).attrs['xsi:type'] === 'uml:Class') {
-        attrs['clientDependency'] = padId(obj.implementedTypes[0].name + 'Realization')
+        if(obj.implementedTypes[0].name !== "Object") {
+          attrs['clientDependency'] = padId(obj.name + '_' + obj.implementedTypes[0].name + 'Realization');
+        }
       }
     } catch(e) {
     }
@@ -429,10 +431,14 @@ xw.writeAttribute('encoding', 'UTF-8');
       
       obj.implementedTypes.forEach(function(implementedType) {
 
+        if(implementedType.name === 'Object') {
+          return;
+        }
+
         // console.log(obj, implementedType, padId(obj.name));
         // return;
         createElement('interfaceRealization', {
-          'xmi:id': padId(implementedType.name + 'Realization'),
+          'xmi:id': padId(obj.name + '_' + implementedType.name + 'Realization'),
           client: padId(obj.name),
           supplier: padId(implementedType.name),
           contract: padId(implementedType.name)
