@@ -42,7 +42,7 @@
     "elementType": "packagedElement",
     "attrs": {
       "xsi:type": "uml:Class",
-      "xmi:id": "_{{id}}",
+      "xmi:id": "{{name}}",
       "name": "{{name}}"
     }
   },
@@ -50,7 +50,7 @@
     "elementType": "packagedElement",
     "attrs": {
       "xsi:type": "uml:Interface",
-      "xmi:id": "_{{id}}",
+      "xmi:id": "{{name}}",
       "name": "{{name}}"
     }
   },
