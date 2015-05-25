@@ -309,10 +309,19 @@ xw.writeAttribute('encoding', 'UTF-8');
       attrs = translateObjectAttributes(obj, attrs, 'parent:', parentAttrs);
     }
 
+    // Make uml:Class and uml:Interface be referencable
+    switch(getTranslation(obj).attrs['xsi:type']) {
+
+      case 'uml:Class':
+      case 'uml:Interface':
+        createdTypes[obj.name] = padId(obj.name);
+        break;
+
+    }
+
     // interface realization reference
     try {
       if(getTranslation(obj).attrs['xsi:type'] === 'uml:Class') {
-        createdTypes[obj.name] = padId(obj.name);
         attrs['clientDependency'] = padId(obj.implementedTypes[0].name + 'Realization')
       }
     } catch(e) {
