@@ -1,7 +1,8 @@
 var translation = require('./config/translation.json'),
     typescriptDataTypes = require('./config/typescriptDataTypes.json')
     argv = require('optimist').argv,
-    path = require('path');
+    path = require('path'),
+    crypto = require('crypto');
 
 // input file is the first cli argument
 var src = path.resolve(__dirname, argv._[0]),
@@ -32,7 +33,8 @@ xw.writeAttribute('encoding', 'UTF-8');
   }
 
   function padId(str) {
-    return pad(str, 23, '_');
+    var d = crypto.createHash('md5').update(str).digest('hex');
+    return '_' + d.substr(0, 23);
   }
 
   function getAndHashTypeId(typeName) {
