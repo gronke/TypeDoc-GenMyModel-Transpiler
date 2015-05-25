@@ -312,7 +312,7 @@ xw.writeAttribute('encoding', 'UTF-8');
     // interface realization reference
     try {
       if(getTranslation(obj).attrs['xsi:type'] === 'uml:Class') {
-        //console.log(obj.implementedTypes[0]);
+        createdTypes[obj.name] = padId(obj.name);
         attrs['clientDependency'] = padId(obj.implementedTypes[0].name + 'Realization')
       }
     } catch(e) {
