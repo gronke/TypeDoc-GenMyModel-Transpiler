@@ -440,6 +440,24 @@ xw.writeAttribute('encoding', 'UTF-8');
     } catch(e) {
     }
 
+    // Generalization
+    try {
+      
+      obj.extendedTypes.forEach(function(extendedType) {
+
+        // console.log(obj, implementedType, padId(obj.name));
+        // return;
+        createElement('generalization', {
+          general: getAndHashTypeId(extendedType.name)
+        }, out);
+
+        out.endElement();
+
+      });
+
+    } catch(e) {
+    }
+
     out.endElement();
 
   }
