@@ -11,7 +11,7 @@ var src = path.resolve(__dirname, argv._[0]),
 var XMLWriter = require('xml-writer');
     xw = new XMLWriter;
 
-var types = ['jQuery', 'number', 'string', 'boolean', 'void'];
+var types = ['jQuery', 'Array', 'number', 'string', 'boolean', 'void'];
 var createdTypes = [];
 
 var verbose = false;
@@ -81,10 +81,6 @@ xw.writeAttribute('encoding', 'UTF-8');
     types.forEach(function(type) {
 
       typeId = padId(type);
-
-      if(type.toLowerCase() === 'array') {
-        return;
-      }
 
       var xsiType = typescriptDataTypeExists(type) ? "uml:DataType" : "uml:Class";
 
