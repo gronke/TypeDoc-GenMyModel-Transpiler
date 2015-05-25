@@ -33,7 +33,7 @@ xw.writeAttribute('encoding', 'UTF-8');
   }
 
   function padId(str) {
-    var d = crypto.createHash('md5').update(str).digest('hex');
+    var d = crypto.createHash('sha1').update(str).digest('hex');
     return '_' + d.substr(0, 23);
   }
 
@@ -105,7 +105,7 @@ xw.writeAttribute('encoding', 'UTF-8');
   function generateRandomId(len) {
     len = len || 24;
 
-    var randomString = '_';
+    var randomString = '';
     var pool = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 
     while(randomString.length<len) {
@@ -120,7 +120,7 @@ xw.writeAttribute('encoding', 'UTF-8');
     var packagedElement = target.startElement(elementType);
 
     attrs = attrs || {};
-    attrs['xmi:id'] = attrs['xmi:id'] || generateRandomId();
+    attrs['xmi:id'] = attrs['xmi:id'] || padId(generateRandomId());
     
     for(var key in attrs) {
       packagedElement.writeAttribute(key, attrs[key]);
@@ -314,15 +314,7 @@ xw.writeAttribute('encoding', 'UTF-8');
     }
 
     // handle (translated) uml:Class type as referencable type
-    try {
-      if(getTranslation(obj).attrs['xsi:type'] === 'uml:Class') {
-        var type = padId(obj.name);
-        createdTypes[obj.name] = type;
-        attrs['xmi:id'] = type;
-      }
-    } catch(e) {
-      attrs['xmi:id'] = attrs['xmi:id'] || generateRandomId();
-    }
+    attrs['xmi:id'] = padId(attrs['xmi:id'] || generateRandomId());
 
 
     if(isObjectFlagDefined('inheritedFrom', obj)) {
