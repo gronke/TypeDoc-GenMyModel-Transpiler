@@ -435,8 +435,6 @@ xw.writeAttribute('encoding', 'UTF-8');
           return;
         }
 
-        // console.log(obj, implementedType, padId(obj.name));
-        // return;
         createElement('interfaceRealization', {
           'xmi:id': padId(obj.name + '_' + implementedType.name + 'Realization'),
           client: padId(obj.name),
@@ -456,8 +454,6 @@ xw.writeAttribute('encoding', 'UTF-8');
       
       obj.extendedTypes.forEach(function(extendedType) {
 
-        // console.log(obj, implementedType, padId(obj.name));
-        // return;
         createElement('generalization', {
           general: getAndHashTypeId(extendedType.name)
         }, out);
