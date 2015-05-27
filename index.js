@@ -11,7 +11,7 @@ var src = path.resolve(__dirname, argv._[0]),
 var XMLWriter = require('xml-writer');
     xw = new XMLWriter;
 
-var types = ['jQuery', 'Array', 'number', 'string', 'boolean', 'void'];
+var types = ['jQuery', 'Array', 'Object', 'T', 'number', 'string', 'boolean', 'void'];
 var createdTypes = [];
 
 var verbose = false;

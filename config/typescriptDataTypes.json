@@ -3,5 +3,8 @@
   "string",
   "number",
   "boolean",
-  "void"  
+  "void",
+  "T",
+  "Object",
+  "Array"
 ]
