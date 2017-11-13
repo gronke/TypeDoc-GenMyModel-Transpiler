@@ -1,12 +1,23 @@
 {
   "name": "transpiler",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Transpile TypeDoc JSON output to GenMyModel XML",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Stefan & Flippie",
+  "author": "Stefan Grönke <stefan@gronke.net>",
+  "contributors": [
+    {
+      "name": "Flippie Coetser",
+      "url": "https://github.com/FlippieCoetser"
+    },
+    {
+      "name": "Stefan Grönke",
+      "email": "stefan@gronke.net",
+      "url": "https://github.com/gronke"
+    }
+  ]
   "dependencies": {
     "xml-writer": "^1.6.0"
   }
